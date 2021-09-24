@@ -10,10 +10,10 @@ namespace Application
     
     public class Fetching
     {
-        public static async Task<List<CourseName>> GetDataFromHttp()
+        public static async Task<List<string>> GetDataFromHttp()
         {
             var client = new HttpClient();
-            var jsonTask = client.GetFromJsonAsync<List<CourseName>>("https://raw.githubusercontent.com/chyld/datasets/main/subjects.json");
+            var jsonTask = client.GetFromJsonAsync<List<string>>("https://raw.githubusercontent.com/chyld/datasets/main/subjects.json");
             await Task.WhenAll(jsonTask);
 
             if (jsonTask.Status != TaskStatus.RanToCompletion) throw new Exception("JSON Error");
