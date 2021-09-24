@@ -4,34 +4,40 @@ using FluentAssertions;
 
 namespace Library.Tests
 {
+// {public class TCourse
+// {
+//     private TeacherCourse _Tcourse;
+//     public TCourse()
+//     {
+//         _Tcourse = new TeacherCourse("","");
+//     }
     public class AdminTest
+{
+
+    [Fact]
+    public void TeacherObjectShouldDisplayFullName()
     {
-
-        [Fact]
-        public void TeacherObjectShouldDisplayFullName()
-        {
-            //Arrange
-            Teacher teacher = new() { First = "Emily", Last = "White" };
-            // Act
-            string fullName = teacher.ToString();
-            // Assert
-            fullName.Should().Be("Emily White");
-
-        }
-        //  [Fact]
-        //  public void TeacherIsAssignedToClass()
-        //  {
-        //      //Arrange
-        //      Teacher teacher = new() { First = "Emily", Last = "White" };
-        //      //Act
-        //       string teacherclass = "Algebra";
-        //       teacher.assignClass("Algebra");
-        //      //Assert
-        //       teacher.getClass().Should().Be(teacherclass);
-
-
+        //Arrange
+        Teacher teacher = new() { First = "Emily", Last = "White" };
+        // Act
+        string fullName = teacher.ToString();
+        // Assert
+        fullName.Should().Be("Emily White");
 
     }
+    [Fact]
+
+    public void TeacherIsAssignedToCourse()
+    {
+        //Arrange
+        Teacher teacher = new() { First = "Emily", Last = "White" };
+        //Act
+        teacher.AddTeacherCourse("Algebra");
+        //Assert
+        teacher.Courses.Should().HaveCount(1);
+    }
+
+}
 }
 
 
